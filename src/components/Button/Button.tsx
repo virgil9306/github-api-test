@@ -4,27 +4,34 @@ import './Button.css';
 
 type TButtonProps = {
   text: string,
-  buttonType?: "submit",
+  buttonType?: "submit" | "button" | "reset" | undefined,
   buttonValue?: string,
-  callback?: (args?:any) => any
+  callback?: Function,
 };
 
 const Button = ({
   text,
   buttonType,
   buttonValue,
-  callback = () => {},
+  callback,
 }:TButtonProps) => { 
+
+  const eventProps = {
+    ...(callback && {
+      onClick: (e:any) => {
+        e.preventDefault(); // prevent refresh
+        callback();
+      },
+    }),
+  };
+
   return (
     <button
       type={buttonType}
       value={buttonValue}
-      onClick={(event) => {
-        callback();
-        event.preventDefault(); // prevent refresh
-      }}
+      {...eventProps}
       >
-      <span>{text}</span>
+      {text}
     </button>
   );
 };
