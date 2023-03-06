@@ -1,5 +1,3 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -31,7 +29,29 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Development
 
-Issue tracking available on GitHub as a Project Board. See [here](https://github.com/users/virgil9306/projects/2/views/1)
+#### Issue Tracking
+
+Issue tracking available on GitHub.
+
+#### Features Implemented
+
+- Custom issue search
+- Pagination and page limits
+- API error handling
+  - Note: Instruction "implement rate limiting" was understood to mean "handle the rate limiting of the API" rather than "implement client-side rate limiting logic"
+- Basic test (only one component)
+- Custom CSS
+
+#### Roadmap
+
+Due to time constraints the following were not implemented, but could be a good exercise to include:
+
+- [ ] Loading screens for when changing pages, for better UX and prevent people from pressing the page button too much
+- [ ] Unit testing (mock API responses)
+- [ ] Visual, snapshot testing
+- [ ] Removal of unused files (bloat) in `create-react-app` boilerplate
+- [ ] Cache some pages of results for UX (need to consider use case: what to do when the data gets updated?)
+- [ ] Axios for API call: handle API error by status code than error message presence in response body (403 - GH usage limit exceeded error)
 
 =======
 # github-api-test
