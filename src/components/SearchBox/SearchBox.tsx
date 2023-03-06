@@ -22,8 +22,8 @@ const SearchBox = ({ callback, inputValue, setInputValue }: TSearchBoxProps) => 
 
   return (
     <div className='SearchBox'>
-      <p className='SearchHeader'>GitHub Issue Search</p>
-      <p className='SearchPrompt'>Example: GitHub Octocat in:readme user:defunkt</p>
+      <p className='header'>GitHub Issue Search</p>
+      <p className='prompt'>Example: GitHub Octocat in:readme user:defunkt</p>
       <form onSubmit={handleSubmit}>
         <input type="text" value={inputValue} onChange={onChangeHandler} />
         <Button

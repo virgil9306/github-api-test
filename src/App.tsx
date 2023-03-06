@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // Components
 import Container from './components/Container/Container'
@@ -7,7 +6,7 @@ import List from './components/List/List';
 import Pager from './components/Pager/Pager';
 import SearchBox from './components/SearchBox/SearchBox';
 // Types
-import { TGitHubItem, TGitHubApiResponse } from './types';
+import { TGitHubItem } from './types';
 // API
 import { search } from './api';
 // Constants
@@ -47,7 +46,12 @@ function App() {
     if (inputValue !== '') {
       fetchData();
     }
-  }, [page])
+    // Disable eslint check for exhaustive-deps.
+    // Why? Because we only want `page` as dependency for this hook,
+    // and cannot declare those inside this hook because we use them 
+    // elsewhere.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   const hasNextPage = maxPages > page;
   const hasPreviousPage = page > 1;

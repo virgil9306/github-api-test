@@ -17,7 +17,7 @@ type TListItemProps = {
 
 const ListItem = ({ title, url, state, user: { id } }: TListItemProps) => (
   <li className='list-item'>
-    <a href={url} target="_blank">
+    <a href={url} target="_blank" rel="noreferrer">
       <span className='id'>ID: {id}</span>
       <span className='title'>{title}</span>
       <span className='state'>{state.toUpperCase()}</span>
