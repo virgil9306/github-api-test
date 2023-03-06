@@ -56,11 +56,20 @@ function App() {
     <div className="App">
       <Container>
         <SearchBox
-          callback={fetchData}
+          callback={() => {
+            // Trigger search by setting page back to 1
+            if (page !== 1) {
+              setPage(1);
+            }
+            // If it is already 1 just call fetchData()
+            else {
+              fetchData();
+            }
+          }}
           inputValue={inputValue}
           setInputValue={setInputValue}
         />
-        {results && <p>Results: {results}</p>}
+        {results && <p className='results-counter'>Results: {results}</p>}
         {results && <Pager
           page={page}
           hasNextPage={hasNextPage}
