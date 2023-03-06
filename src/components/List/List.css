@@ -1,0 +1,39 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+.list-item {
+  display: flex;
+  background-color: #dedede;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-item a {
+  flex: 1;
+  display: flex;
+  text-align: left;
+  text-decoration: none;
+  color: #000000;
+  font-weight: normal;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.list-item a .title {
+  flex: 1;
+}
+
+.list-item a .id,
+.list-item a .state {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}

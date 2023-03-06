@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 // Styling
 import './SearchBox.css';
 // Components
 import Button from '../Button/Button';
-// Types
-import { TGitHubApiResponse, TGitHubItem } from '../../types';
 
 type TSearchBoxProps = {
   callback: any,
@@ -23,9 +21,9 @@ const SearchBox = ({ callback, inputValue, setInputValue }: TSearchBoxProps) => 
   };
 
   return (
-    <div>
-      <p>Enter search query</p>
-      <p>(Example: GitHub Octocat in:readme user:defunkt)</p>
+    <div className='SearchBox'>
+      <p className='SearchHeader'>GitHub Issue Search</p>
+      <p className='SearchPrompt'>Example: GitHub Octocat in:readme user:defunkt</p>
       <form onSubmit={handleSubmit}>
         <input type="text" value={inputValue} onChange={onChangeHandler} />
         <Button

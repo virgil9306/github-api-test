@@ -27,6 +27,7 @@ const Button = ({
 
   return (
     <button
+      className='Button'
       type={buttonType}
       value={buttonValue}
       {...eventProps}

@@ -1,0 +1,7 @@
+.Pager {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

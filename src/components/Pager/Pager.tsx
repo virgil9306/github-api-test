@@ -19,7 +19,7 @@ const Pager = ({
   hasNextPage,
   hasPreviousPage,
 }: TPagerProps) => {
-  return (<div>
+  return (<div className='Pager'>
     {
       hasPreviousPage && (
         <Button text="<" callback={callbackPrev} />

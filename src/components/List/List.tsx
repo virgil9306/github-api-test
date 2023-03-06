@@ -16,18 +16,20 @@ type TListItemProps = {
 };
 
 const ListItem = ({ title, url, state, user: { id } }: TListItemProps) => (
-  <li>
+  <li className='list-item'>
     <a href={url}>
-      <span>{title}</span>
-      <span>{state}</span>
-      <span>{id}</span>
+      <span className='id'>ID: {id}</span>
+      <span className='title'>{title}</span>
+      <span className='state'>{state.toUpperCase()}</span>
     </a>
   </li>
 );
 
 const List = ({ items }: TListProps) => {
-  return (<ul>
-    { items.map(({id, ...item}) => <ListItem key={id} {...item} />) } 
+  return (<ul className='list'>
+    { items.map(({id, ...item}) =>
+      <ListItem key={id} {...item} />)
+    } 
   </ul>);
 };
 
