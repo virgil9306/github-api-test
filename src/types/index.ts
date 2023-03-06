@@ -8,10 +8,12 @@ export type TGitHubItem = {
   state: string,
   url: string,
   user: TGitHubUser,
+  id: number,
 };
 
 export type TGitHubApiResponse = {
   items: Array<TGitHubItem>,
   total_count: number,
+  message?: string,
 };
 

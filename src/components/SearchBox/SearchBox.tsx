@@ -3,32 +3,19 @@ import React, { useEffect, useState } from "react"
 import './SearchBox.css';
 // Components
 import Button from '../Button/Button';
-// API
-import { search } from '../../api';
 // Types
-import { TGitHubItem } from '../../types';
+import { TGitHubApiResponse, TGitHubItem } from '../../types';
 
 type TSearchBoxProps = {
-  callback: (list: Array<TGitHubItem>) => any
+  callback: any,
+  inputValue: string,
+  setInputValue: React.Dispatch<React.SetStateAction<string>>,
 };
 
-const SearchBox = ({ callback }: TSearchBoxProps) => {
-  const [inputValue, setInputValue] = useState('');
-
-  // Data fetch
-  const fetchData = () => {
-    if (inputValue !== '') {
-      console.log("Fetching data for ", inputValue);
-      search(inputValue)
-        .then(list => callback(list));
-    } else {
-      alert('Please enter a query. (Example: GitHub Octocat in:readme user:defunkt)');
-    }
-  };
-
+const SearchBox = ({ callback, inputValue, setInputValue }: TSearchBoxProps) => {
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetchData();
+    callback();
   };
 
   const onChangeHandler:React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -37,11 +24,10 @@ const SearchBox = ({ callback }: TSearchBoxProps) => {
 
   return (
     <div>
+      <p>Enter search query</p>
+      <p>(Example: GitHub Octocat in:readme user:defunkt)</p>
       <form onSubmit={handleSubmit}>
-        <label>
-          Enter search query:
-          <input type="text" value={inputValue} onChange={onChangeHandler} />
-        </label>
+        <input type="text" value={inputValue} onChange={onChangeHandler} />
         <Button
           text="Submit"
           buttonType="submit"

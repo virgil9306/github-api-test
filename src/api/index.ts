@@ -1,30 +1,32 @@
+// Types
 import {
   TGitHubUser,
   TGitHubItem,
   TGitHubApiResponse,
 } from '../types';
+// Constants
+import { PER_PAGE } from '../config/constants';
 
 const URL_ROOT = 'https://api.github.com/search/issues'
-const OPTIONS = '&sort=created&order=asc';
+const OPTIONS = `&sort=created&order=asc&per_page=${PER_PAGE}`;
 
 const buildUrl = (query: string, page: number) =>
-  `${URL_ROOT}?q=${encodeURIComponent(query)}${OPTIONS}`
+  `${URL_ROOT}?q=${encodeURIComponent(query)}${OPTIONS}&page=${page}`
 
-// TODO:
-// - Throw errors (e.g. length limits, throttling) for UI to handle
-// - build URL: 'q=' + encodeURIComponent(query);
-// - give example query above search bar
 const search = (
-  // query: string,
-  query = 'GitHub Octocat in:readme user:defunkt',
-  page = 0
-):Promise<void | Array<TGitHubItem>> =>
+  query = 'GitHub Octocat in:readme user:defunkt', // default example
+  page: number,
+):Promise<TGitHubApiResponse> =>
   fetch(buildUrl(query, page))
     .then(res => res.json())
-    .then((data: TGitHubApiResponse) => data.items)
-    .then((items: Array<TGitHubItem>) => {
-      console.log(items);
-      return items;
+    .then((data: TGitHubApiResponse) => {
+      console.log("GH API Data:", data);
+      // if error throw it
+      if (data.hasOwnProperty('message')) {
+        throw(new Error(data.message));
+      }
+      // else
+      return data;
     });
 
 export {

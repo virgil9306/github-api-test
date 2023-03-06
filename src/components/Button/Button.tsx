@@ -6,7 +6,7 @@ type TButtonProps = {
   text: string,
   buttonType?: "submit" | "button" | "reset" | undefined,
   buttonValue?: string,
-  callback?: Function,
+  callback?: Function | null,
 };
 
 const Button = ({
